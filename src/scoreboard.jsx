@@ -1,26 +1,47 @@
 import React from "react";
-import { useStoreState } from "easy-peasy";
+import { useStoreState, useStoreActions } from "easy-peasy";
 import Table from 'react-bootstrap/Table';
 import getRanking from "./ranking";
 import Row from "./row";
 import SegmentLink from "./segmentLink";
-import styles from "./mystyle.module.css"
 import findNewestPr from "./findNewestPr";
 import HeaderRow from "./HeaderRow";
-
+import useMinMaxDate from "./findNewestPr";
+import * as L from "partial.lenses";
 
 const Scoreboard = props => {
-    const {segments, dateRange} = props;
-
     const state = useStoreState( state => state);
+    const {segments, dateRange} = props;
 
     const storeSegments = state.segments;
     const allTime = state.athleteEfforts[dateRange];
     const leaderboardsAllTime = state.segmentLeaderboards[dateRange];
-    
-    const newestPrDate = findNewestPr(leaderboardsAllTime);
 
-    const segmentRowMapper = clicked => segments.map(seg => {
+    const curSegments = Array.from(segments.filter(seg => leaderboardsAllTime[seg.id]));
+
+    const curSegmentsIds = new Set(curSegments.map(x => x.id+""));
+
+    // const currentDates = L.collect([   
+    //         L.entries, 
+    //         L.when( ([segId,_]) => curSegmentsIds.has(segId) ), 
+    //         1, 
+    //         L.values, 
+    //         "start_date_local"
+    //     ] ,
+    //     leaderboardsAllTime
+    // );
+
+    const currentLeaderboards = 
+        Object.fromEntries(Object
+            .entries(leaderboardsAllTime)
+            .filter(([segId,_]) => curSegmentsIds.has(segId))
+        );
+    
+    // useMinMaxDate(currentLeaderboards);
+    
+    // },[minMaxDate]);
+
+    const segmentRowMapper = clicked => curSegments.map(seg => {
         const numAthletes = leaderboardsAllTime[seg.id] ? leaderboardsAllTime[seg.id].length : "";
         return (<SegmentLink 
             key={seg.id}
@@ -34,10 +55,10 @@ const Scoreboard = props => {
         }
     );
     
-    const ranking = getRanking(allTime, segments,leaderboardsAllTime);
+    const ranking = getRanking(allTime, curSegments,leaderboardsAllTime);
     
     const dataRows = ranking.map(({athleteName,ranks,rankPos},ind) =>  
-        <Row key={athleteName} args={[athleteName,ranks,allTime[athleteName],segments,rankPos]} />
+        <Row key={athleteName} args={[athleteName,ranks,allTime[athleteName],curSegments,rankPos]} />
     );
 
     return (

@@ -14,7 +14,13 @@ const store = createStore({
     year:{}
   },
   segments:{},
-  
+  minMaxDate: null,
+
+  addMinMaxDate : action((state, minMaxDate) => {
+    if(minMaxDate === state.minMaxDate) return;
+    state.minMaxDate = minMaxDate;
+  }),
+
   addSegment : action((state, segment) => {
     if (!segment) return;
     const {name,distance,average_grade} = segment

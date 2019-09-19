@@ -12,7 +12,7 @@ const fixSharedPosition = rankings => {
     return fixedRankPos;
 }
 
-const getRanking = (allTime,segments,leaderboards) => {
+const getRanking = (allTime,curSegments,leaderboards) => {
 
     const getNoEffortScore = segId => leaderboards[segId].length + 1;
 
@@ -20,11 +20,11 @@ const getRanking = (allTime,segments,leaderboards) => {
         if(!effort) return getNoEffortScore(segmentId);
         return effort.rank;
     }
-    const curSegments = Array.from(segments.filter(seg => leaderboards[seg.id]));
+    // const curSegments = Array.from(segments.filter(seg => leaderboards[seg.id]));
 
     const createRanks = ([athlete_name,athleteRecord],ind) => ({
             athleteName : athlete_name,
-            ranks : curSegments.map( seg => getRank(athleteRecord[seg.id],seg.id))
+            ranks : curSegments.map( seg => getRank(athleteRecord[seg.id], seg.id))
     });
     const ranks = Object.entries(allTime).map(createRanks);
 
@@ -34,9 +34,6 @@ const getRanking = (allTime,segments,leaderboards) => {
         xs => xs.reduce((a, b) => a + b, 0),
         ranks
     );
-
-
-    
 
     const summedArray = Object.entries(summed).map(([key, value]) => value);
     const sorted = [...summedArray].sort((a,b) => a.ranks - b.ranks)

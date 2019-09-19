@@ -26,11 +26,11 @@ export const runningSegments = {
     // },
     2553283: {
         id:2553283,
-        name:"Tour de Finance løp"
+        name:"Tour de Finance"
     },
     1557103 : {
         id:1557103,
-        name:"Vettakollen opp langs eggen 2"
+        name:"Vettakollen opp"
     }
 };
 

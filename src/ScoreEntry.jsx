@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./mystyle.module.css";
+import { useStoreState } from "easy-peasy";
 
 export const createScoreEntry = (data,clicked,ind) => {
     const props = {...data,clicked};
@@ -19,7 +20,12 @@ const secToMMSS = timeInSecStr => {
     return date.toISOString().substr(14, 5);
 }
 const ScoreEntry = props => {
+    // const {minDate,maxDate} = useStoreState(state => state.minMaxDate);
     const {athlete_name, elapsed_time, start_date_local,rank,clicked} = props;
+    // console.log({minDate,maxDate});
+    // if(start_date_local === minDate || start_date_local === maxDate) 
+        // console.log(start_date_local);
+
     const date = start_date_local.substr(0,10).split("-").reverse().join(".");
     const elapsedTimeInSeconds = secToMMSS(elapsed_time);
     const text = `${elapsedTimeInSeconds} (#${rank})`;
