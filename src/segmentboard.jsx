@@ -14,33 +14,33 @@ const SegmentBoard = props => {
   const [payload, setPayload] = useState(null);
   const segmentId = props.segmentId;
 
-  const club = props.club || clubs.bekk;
+  const club = props.club || clubs.bliss;
 
   const accessToken = useStoreState(state => state.accessToken);
 
   useEffect(() => {
-    if(!accessToken) return;
+    if (!accessToken) return;
     const leaderboardRequestCreator = urlFunctions[props.dateRange];
     const req = leaderboardRequestCreator(club, segmentId);
-    Api.getRequest(accessToken,req).then(x => {
+    Api.getRequest(accessToken, req).then(x => {
       setPayload({
         id: segmentId,
         dateRange: props.dateRange,
         leaderboard: x.data.entries
       });
     });
-  }, [segmentId, props.dateRange, club,accessToken]);
+  }, [segmentId, props.dateRange, club, accessToken]);
 
   useStoreActions(actions => actions.addLeaderboard)(payload);
 
   useEffect(() => {
-    if(!accessToken) return;
+    if (!accessToken) return;
     const segReq = Api.createSegment(segmentId);
 
-    Api.getRequest(accessToken,segReq).then(x => {
+    Api.getRequest(accessToken, segReq).then(x => {
       setSegmentPayload(x.data);
     });
-  }, [segmentId,accessToken]);
+  }, [segmentId, accessToken]);
 
   useStoreActions(actions => actions.addSegment)(segmentPayload);
 
