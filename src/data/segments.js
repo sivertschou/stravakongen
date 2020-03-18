@@ -1,12 +1,12 @@
 export const allSegments = {
   2462560: {
     id: 2462560,
-    name: "Sognsvann rundt",
+    name: "Sognsvann rundt medsols",
     groups: { Løpekongen: 1 }
   },
   2783427: {
     id: 2783427,
-    name: "Sognsvann motsols, strand til strand",
+    name: "Sognsvann rundt motsols",
     groups: {
       Løpekongen: 1
     }
@@ -14,6 +14,13 @@ export const allSegments = {
   1557103: {
     id: 1557103,
     name: "Vettakollen opp langs eggen 2",
+    groups: {
+      Løpekongen: 1
+    }
+  },
+  5891167: {
+    id: 5891167,
+    name: "Sognsvann-Ullevålseter",
     groups: {
       Løpekongen: 1
     }

@@ -5,6 +5,7 @@ import getRanking from "./ranking";
 import Row from "./row";
 import SegmentLink from "./segmentLink";
 import HeaderRow from "./HeaderRow";
+import { allSegments } from "./data/segments";
 
 const Scoreboard = props => {
   const { segments, dateRange } = props;
@@ -21,7 +22,7 @@ const Scoreboard = props => {
         ? leaderboardsAllTime[segId].length
         : "";
       const backupName = storeSegments[segId] && storeSegments[segId].name;
-      const segmentName = backupName;
+      const segmentName = allSegments[segId] && allSegments[segId].name;
       return (
         <SegmentLink
           key={segId}
