@@ -1,4 +1,4 @@
-## Stravakongen@bliss
+## stravakongen@bliss
 
 [stravakongen@bliss](https://sivertschou.github.io/stravakongen/#/)
 

@@ -23,12 +23,14 @@ const Scoreboard = props => {
         : "";
       const backupName = storeSegments[segId] && storeSegments[segId].name;
       const segmentName = allSegments[segId] && allSegments[segId].name;
+      const realSegmentName = storeSegments[segId] && storeSegments[segId].name;
       return (
         <SegmentLink
           key={segId}
           segmentId={segId}
           numAthletes={numAthletes}
           segmentName={segmentName}
+          realSegmentName={realSegmentName}
           distance={storeSegments[segId] && storeSegments[segId].distance}
           averageGrade={
             storeSegments[segId] && storeSegments[segId].average_grade
