@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/stravakongen/static/css/main.da26fea2.chunk.css",
-    "main.js": "/stravakongen/static/js/main.e73e70cd.chunk.js",
-    "main.js.map": "/stravakongen/static/js/main.e73e70cd.chunk.js.map",
+    "main.js": "/stravakongen/static/js/main.9b76b463.chunk.js",
+    "main.js.map": "/stravakongen/static/js/main.9b76b463.chunk.js.map",
     "runtime~main.js": "/stravakongen/static/js/runtime~main.e01733ee.js",
     "runtime~main.js.map": "/stravakongen/static/js/runtime~main.e01733ee.js.map",
     "static/js/2.ebb83b0f.chunk.js": "/stravakongen/static/js/2.ebb83b0f.chunk.js",
     "static/js/2.ebb83b0f.chunk.js.map": "/stravakongen/static/js/2.ebb83b0f.chunk.js.map",
     "index.html": "/stravakongen/index.html",
-    "precache-manifest.6516e407d48c91ae5f25dd4d5f02706e.js": "/stravakongen/precache-manifest.6516e407d48c91ae5f25dd4d5f02706e.js",
+    "precache-manifest.3255c34bd44e5288e0fd2bb83277fd16.js": "/stravakongen/precache-manifest.3255c34bd44e5288e0fd2bb83277fd16.js",
     "service-worker.js": "/stravakongen/service-worker.js",
     "static/css/main.da26fea2.chunk.css.map": "/stravakongen/static/css/main.da26fea2.chunk.css.map"
   }
